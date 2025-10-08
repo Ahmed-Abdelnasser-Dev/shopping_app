@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopping_app/core/routes/app_router.dart';
 import 'package:shopping_app/core/routes/routes.dart';
 import 'package:shopping_app/core/theme/colors.dart';
-import 'package:shopping_app/core/theme/text_styles.dart';
 
 class ShoppingApp extends StatelessWidget {
   final AppRouter appRouter;
@@ -18,11 +17,9 @@ class ShoppingApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
+          title: 'Shopping App',
           theme: ThemeData(
             scaffoldBackgroundColor: ColorManger.white,
-            textTheme: TextTheme(
-              bodyLarge: TextStyles.h1,
-            ),
           ),
           initialRoute: Routes.root,
           onGenerateRoute: appRouter.generateRoute,
