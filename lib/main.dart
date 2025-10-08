@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/routes/app_router.dart';
+
+import 'package:shopping_app/shopping_app.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(ShoppingApp(appRouter: AppRouter(),));
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
-}

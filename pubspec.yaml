@@ -9,6 +9,35 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  # State Management
+  flutter_bloc: ^9.1.1
+  freezed: ^3.2.3
+  freezed_annotation: ^3.1.0
+
+  # Dependency Injection
+  get_it: ^8.2.0
+
+  # Networking
+  dio: ^5.9.0
+  pretty_dio_logger: ^1.4.0
+  retrofit: ^4.7.2
+  retrofit_generator: ^10.0.5
+
+  # JSON Serialization
+  json_annotation: ^4.9.0
+  json_serializable: ^6.11.1
+
+  # Localization
+  intl: ^0.20.2
+  easy_localization: ^3.0.8
+
+  # UI
+  flutter_svg: ^2.2.1
+  flutter_native_splash: ^2.4.6
+
+  # Utilities
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +46,24 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter_18pt-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Inter_18pt-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Inter_18pt-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inter_18pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter_18pt-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter_18pt-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter_18pt-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter_18pt-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Inter_18pt-Black.ttf
+          weight: 900
