@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/theme/text_styles.dart';
 import 'package:shopping_app/core/theme/colors.dart';
+import 'package:shopping_app/core/widgets/main_app_bar.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -8,6 +9,10 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: MainAppBar(
+        showCartButton: true,
+        isHome: true,
+      ),
       body: Center(
         child: Text(
           'Hello World!',

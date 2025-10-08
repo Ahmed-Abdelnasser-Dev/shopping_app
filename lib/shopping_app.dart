@@ -19,7 +19,7 @@ class ShoppingApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Shopping App',
           theme: ThemeData(
-            scaffoldBackgroundColor: ColorManger.white,
+            scaffoldBackgroundColor: ColorManger.background,
           ),
           initialRoute: Routes.root,
           onGenerateRoute: appRouter.generateRoute,

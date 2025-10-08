@@ -46,6 +46,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/images/
+    - assets/icons/app_bar/
+
   fonts:
     - family: Inter
       fonts:
