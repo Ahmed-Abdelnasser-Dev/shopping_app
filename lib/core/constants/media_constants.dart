@@ -11,5 +11,10 @@ abstract class Media {
 
   //? ------------- Icons -------------
   static const logo = "${baseIcon}icons/logo.svg";
+
+  // -------- App Bar Icons ------------
+  static const menu = "${baseIcon}app_bar/menu.svg";
+  static const back = "${baseIcon}app_bar/arrow-left.svg";
+  static const cart = "${baseIcon}app_bar/bag.svg";
   
 }
