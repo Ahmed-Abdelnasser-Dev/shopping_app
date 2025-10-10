@@ -18,10 +18,13 @@ class ShoppingApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Shopping App',
+
           theme: ThemeData(
             scaffoldBackgroundColor: ColorManger.background,
+            colorScheme: ColorScheme.fromSeed(seedColor: ColorManger.primary),
+            useMaterial3: true,
           ),
-          initialRoute: Routes.root,
+          initialRoute: Routes.signUp,
           onGenerateRoute: appRouter.generateRoute,
         );
       },

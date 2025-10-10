@@ -32,12 +32,16 @@ dependencies:
   intl: ^0.20.2
   easy_localization: ^3.0.8
 
+  # Code Generation
+  build_runner: ^2.9.0
+  
   # UI
   flutter_svg: ^2.2.1
   flutter_native_splash: ^2.4.6
 
   # Utilities
   flutter_screenutil: ^5.9.3
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:

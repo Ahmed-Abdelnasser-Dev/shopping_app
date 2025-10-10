@@ -39,13 +39,14 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.transparent,
+          scrolledUnderElevation: 0,
           titleSpacing: 0,
           leadingWidth: Spacing.appBarLeadingWidth,
           automaticallyImplyLeading: false,
 
           //* Left side
           leading: Padding(
-            padding: EdgeInsets.only(left: Spacing.appBarSide),
+            padding: EdgeInsets.only(left: Spacing.generalHorizontalPadding),
             child: GestureDetector(
               onTap: isHome
                   ? onMenuPressed
@@ -68,7 +69,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           actions: [
             if (showCartButton)
               Padding(
-                padding: EdgeInsets.only(right: Spacing.appBarSide),
+                padding: EdgeInsets.only(right: Spacing.generalHorizontalPadding),
                 child: GestureDetector(
                   onTap: onCartPressed,
                   child: _buildIconCircle(iconPath: Media.cart),
