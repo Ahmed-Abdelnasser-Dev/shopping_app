@@ -43,6 +43,9 @@ dependencies:
   flutter_screenutil: ^5.9.3
   url_launcher: ^6.3.2
 
+  # Storage
+  shared_preferences: ^2.5.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

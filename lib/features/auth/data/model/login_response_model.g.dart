@@ -8,8 +8,8 @@ part of 'login_response_model.dart';
 
 LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
     LoginResponse(
-      statusCode: (json['statusCode'] as num).toInt(),
-      message: json['message'] as String,
+      statusCode: (json['statusCode'] as num?)?.toInt(),
+      message: json['message'] as String?,
       token: json['token'] as String?,
       refreshToken: json['refreshToken'] as String?,
       expiration: json['expiration'] == null

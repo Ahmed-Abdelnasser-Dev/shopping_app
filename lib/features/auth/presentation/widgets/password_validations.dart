@@ -23,7 +23,7 @@ class PasswordValidations extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        validationItem("At least 4 characters", isLongEnough),
+        validationItem("At least 8 characters", isLongEnough),
         SizedBox(height: 4.h),
         validationItem("At least one uppercase letter", hasUppercase),
         SizedBox(height: 4.h),

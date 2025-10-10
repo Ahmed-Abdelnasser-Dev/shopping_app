@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopping_app/core/routes/route_helper_extensions.dart';
 import 'package:shopping_app/core/routes/routes.dart';
 import 'package:shopping_app/core/theme/colors.dart';
 import 'package:shopping_app/core/theme/text_styles.dart';
@@ -19,7 +18,8 @@ class LoginBlocListener extends StatelessWidget {
       listener: (context, state) {
         state.whenOrNull(
           success: (success) => {
-            context.pop(),
+            // Dismiss any existing loading dialog
+            Navigator.of(context, rootNavigator: true).pop(),
             Navigator.pushReplacementNamed(context, Routes.home),
           },
 
@@ -34,42 +34,33 @@ class LoginBlocListener extends StatelessWidget {
           },
 
           failure: (error) => {
-            context.pop(),
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                behavior: SnackBarBehavior.floating,
-                backgroundColor: ColorManger.errorRed.withAlpha((0.8 * 255).round()),
-                elevation: 3,
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                content: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        error,
-                        style: TextStyles.b4.copyWith(color: ColorManger.white),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () =>
-                          ScaffoldMessenger.of(context).hideCurrentSnackBar(),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Icon(Icons.close, color: Colors.white70),
-                      ),
-                    ),
-                  ],
-                ),
-                duration: const Duration(seconds: 4),
-              ),
-            ),
+            // Dismiss any existing loading dialog
+            Navigator.of(context, rootNavigator: true).pop(),
+            _showErrorSnackBar(context, error),
           },
         );
       },
+    );
+  }
+
+  void _showErrorSnackBar(BuildContext context, String error) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: ColorManger.errorRed,
+        elevation: 0,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        duration: const Duration(milliseconds: 2500),
+        content: Text(
+          error,
+          style: TextStyles.b3.copyWith(color: ColorManger.white),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
     );
   }
 }

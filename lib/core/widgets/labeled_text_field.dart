@@ -57,7 +57,7 @@ class LabeledTextField extends StatelessWidget {
               borderSide: BorderSide(color: ColorManger.primary, width: 0.8),
             ),
             errorBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: ColorManger.successGreen, width: 0.8),
+              borderSide: BorderSide(color: ColorManger.errorRed, width: 0.8),
             ),
             
             suffixIcon: suffixIcon != null
