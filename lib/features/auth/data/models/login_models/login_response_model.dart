@@ -4,21 +4,19 @@ part 'login_response_model.g.dart';
 
 @JsonSerializable()
 class LoginResponse {
-  @JsonKey(name: 'statusCode')
-  final int? statusCode;
-  final String? message;
-  final String? token;
-  final String? refreshToken;
-  final DateTime? expiration;
-  final Map<String, List<String>>? errors;
+  @JsonKey(name: 'accessToken')
+  final String accessToken;
+  
+  @JsonKey(name: 'expiresAtUtc')
+  final DateTime expiresAtUtc;
+  
+  @JsonKey(name: 'refreshToken')
+  final String refreshToken;
 
   LoginResponse({
-    this.statusCode,
-    this.message,
-    this.token,
-    this.refreshToken,
-    this.expiration,
-    this.errors,
+    required this.accessToken,
+    required this.expiresAtUtc,
+    required this.refreshToken,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>

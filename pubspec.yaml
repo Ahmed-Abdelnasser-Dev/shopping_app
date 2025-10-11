@@ -38,6 +38,8 @@ dependencies:
   # UI
   flutter_svg: ^2.2.1
   flutter_native_splash: ^2.4.6
+  shimmer_animation: ^2.2.2
+
 
   # Utilities
   flutter_screenutil: ^5.9.3
@@ -56,8 +58,10 @@ flutter:
   assets:
     - assets/
     - assets/icons/
-    - assets/images/
+    - assets/icons/bottom_nav_bar/
+    - assets/icons/home/
     - assets/icons/app_bar/
+    - assets/images/
 
   fonts:
     - family: Inter

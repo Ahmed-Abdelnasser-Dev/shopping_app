@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopping_app/core/routes/route_helper_extensions.dart';
 import 'package:shopping_app/core/routes/routes.dart';
 import 'package:shopping_app/core/theme/colors.dart';
 import 'package:shopping_app/core/theme/text_styles.dart';
@@ -18,9 +19,8 @@ class LoginBlocListener extends StatelessWidget {
       listener: (context, state) {
         state.whenOrNull(
           success: (success) => {
-            // Dismiss any existing loading dialog
             Navigator.of(context, rootNavigator: true).pop(),
-            Navigator.pushReplacementNamed(context, Routes.home),
+            context.pushNamedAndRemoveUntil(Routes.home, Routes.root),
           },
 
           loading: () => {

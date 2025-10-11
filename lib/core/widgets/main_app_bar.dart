@@ -45,17 +45,19 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           automaticallyImplyLeading: false,
 
           //* Left side
-          leading: Padding(
-            padding: EdgeInsets.only(left: Spacing.generalHorizontalPadding),
-            child: GestureDetector(
-              onTap: isHome
-                  ? onMenuPressed
-                  : onBackPressed ?? () => context.pop(),
-              child: _buildIconCircle(
-                iconPath: isHome ? Media.menu : Media.back,
-              ),
-            ),
-          ),
+          leading: showBackButton
+              ? Padding(
+                  padding: EdgeInsets.only(left: Spacing.generalHorizontalPadding),
+                  child: GestureDetector(
+                    onTap: isHome
+                        ? onMenuPressed
+                        : onBackPressed ?? () => context.pop(),
+                    child: _buildIconCircle(
+                      iconPath: isHome ? Media.menu : Media.back,
+                    ),
+                  ),
+                )
+              : null,
 
           //* Title
           title: showTitle && title != null
@@ -72,7 +74,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                 padding: EdgeInsets.only(right: Spacing.generalHorizontalPadding),
                 child: GestureDetector(
                   onTap: onCartPressed,
-                  child: _buildIconCircle(iconPath: Media.cart),
+                  child: _buildIconCircle(iconPath: Media.bag),
                 ),
               ),
           ],

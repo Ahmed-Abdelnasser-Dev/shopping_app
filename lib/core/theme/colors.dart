@@ -10,6 +10,6 @@ class ColorManger {
   static const Color white = Color(0xffF5F6FA);
   static const Color background = Color(0xffFEFEFE);
   static const Color successGreen = Color(0xff34C559);
-    static const Color errorRed = Color(0xffEA4335);
+  static const Color errorRed = Color(0xffEA4335);
 
 }
