@@ -13,6 +13,13 @@ class ApiConstants {
   // OTP
   static const String verifyEmail = '/api/auth/verify-email';
   static const String resendOtp = '/api/auth/resend-otp';
+
+  // Home
+  static const String categories = '/api/categories';
+  static const String products = '/api/products';
+
+  // Product
+  static const String productById = '/api/products';
 }
 
 // Add to your existing ApiConstants class

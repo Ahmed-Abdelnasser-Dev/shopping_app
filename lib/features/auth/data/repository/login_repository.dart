@@ -5,7 +5,7 @@ import 'package:shopping_app/features/auth/data/models/login_models/login_reques
 import 'package:shopping_app/features/auth/data/models/login_models/login_response_model.dart';
 
 class LoginRepository {
-  final ApiService _apiService;
+  final UnifiedApiService _apiService;
 
   LoginRepository(this._apiService);
 

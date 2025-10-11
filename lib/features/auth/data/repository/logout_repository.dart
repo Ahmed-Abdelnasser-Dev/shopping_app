@@ -3,7 +3,7 @@ import 'package:shopping_app/core/network/api_result.dart';
 import 'package:shopping_app/core/network/api_service.dart';
 
 class LogoutRepository {
-  final ApiService _apiService;
+  final UnifiedApiService _apiService;
 
   LogoutRepository(this._apiService);
 

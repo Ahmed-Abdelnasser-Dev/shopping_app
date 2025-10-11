@@ -5,7 +5,7 @@ import 'package:shopping_app/features/auth/data/models/otp_models/otp_response_m
 import 'package:shopping_app/features/auth/data/models/otp_models/resend_otp_request_model.dart';
 
 class OtpRepository {
-  final ApiService _apiService;
+  final UnifiedApiService _apiService;
 
   OtpRepository(this._apiService);
 

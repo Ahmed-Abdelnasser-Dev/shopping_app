@@ -11,20 +11,35 @@ import 'package:shopping_app/features/auth/presentation/cubit/otp_cubit.dart';
 import 'package:shopping_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:shopping_app/core/network/api_service.dart';
 import 'package:shopping_app/core/network/dio_factory.dart';
+import 'package:shopping_app/features/home/data/datasources/home_remote_datasource.dart';
+import 'package:shopping_app/features/home/data/repositories/home_repository.dart';
+import 'package:shopping_app/features/home/domain/repositories/home_repository.dart';
+import 'package:shopping_app/features/home/presentation/cubit/home_cubit.dart';
+
 
 final getIt = GetIt.instance;
 
 Future<void> setupDependencyInjection() async {
   // Dio and Api Services
   Dio dio = DioFactory.getDio();
-  getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
+  getIt.registerLazySingleton<UnifiedApiService>(() => UnifiedApiService(dio));
 
   // Repositories
-  getIt.registerLazySingleton<LoginRepository>(() => LoginRepository(getIt()));
-  getIt.registerLazySingleton<SignUpRepository>(() => SignUpRepository(getIt()));
-  getIt.registerLazySingleton<OtpRepository>(() => OtpRepository(getIt()));
-  getIt.registerLazySingleton<RefreshTokenRepository>(() => RefreshTokenRepository(getIt()));
-  getIt.registerLazySingleton<LogoutRepository>(() => LogoutRepository(getIt()));
+  getIt.registerLazySingleton<LoginRepository>(() => LoginRepository(getIt<UnifiedApiService>()));
+  getIt.registerLazySingleton<SignUpRepository>(() => SignUpRepository(getIt<UnifiedApiService>()));
+  getIt.registerLazySingleton<OtpRepository>(() => OtpRepository(getIt<UnifiedApiService>()));
+  getIt.registerLazySingleton<RefreshTokenRepository>(() => RefreshTokenRepository(getIt<UnifiedApiService>()));
+  getIt.registerLazySingleton<LogoutRepository>(() => LogoutRepository(getIt<UnifiedApiService>()));
+
+  // Home Data Sources
+  getIt.registerLazySingleton<HomeRemoteDataSource>(
+    () => HomeRemoteDataSourceImpl(getIt<UnifiedApiService>()),
+  );
+
+  // Home Repositories
+  getIt.registerLazySingleton<HomeRepository>(
+    () => HomeRepositoryImpl(getIt<HomeRemoteDataSource>()),
+  );
 
   // Auth Cubit (Global)
   getIt.registerLazySingleton<AuthCubit>(() => AuthCubit(getIt(), getIt()));
@@ -35,4 +50,5 @@ Future<void> setupDependencyInjection() async {
   getIt.registerFactoryParam<OtpCubit, String, void>(
     (email, _) => OtpCubit(getIt(), email),
   );
+  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(getIt<HomeRepository>()));
 }

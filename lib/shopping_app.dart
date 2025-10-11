@@ -8,6 +8,7 @@ import 'package:shopping_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:shopping_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:shopping_app/features/auth/presentation/cubit/signup_cubit.dart';
 import 'package:shopping_app/features/auth/presentation/pages/signup_page.dart';
+import 'package:shopping_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:shopping_app/features/home/presentation/pages/home.dart';
 
 class ShoppingApp extends StatelessWidget {
@@ -40,7 +41,10 @@ class ShoppingApp extends StatelessWidget {
                   loading: () => const Scaffold(
                     body: Center(child: CircularProgressIndicator()),
                   ),
-                  authenticated: () => const Home(),
+                  authenticated: () => BlocProvider(
+                    create: (context) => getIt<HomeCubit>(),
+                    child: const Home(),
+                  ),
                   unauthenticated: () => BlocProvider(
                     create: (context) => getIt<SignUpCubit>(),
                     child: const SignUp(),

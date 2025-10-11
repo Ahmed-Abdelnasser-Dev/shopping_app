@@ -5,7 +5,7 @@ import 'package:shopping_app/features/auth/data/models/refresh_token_models/refr
 import 'package:shopping_app/features/auth/data/models/refresh_token_models/refresh_token_response_model.dart';
 
 class RefreshTokenRepository {
-  final ApiService _apiService;
+  final UnifiedApiService _apiService;
 
   RefreshTokenRepository(this._apiService);
 

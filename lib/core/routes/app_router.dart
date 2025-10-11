@@ -42,6 +42,7 @@ class AppRouter {
           ),
         );
 
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shopping_app/core/network/api_constants.dart';
 import 'package:shopping_app/core/network/auth_interceptor.dart';
 
 
@@ -15,6 +16,7 @@ class DioFactory {
     if (dio == null) {
       dio = Dio();
       dio!
+        ..options.baseUrl = ApiConstants.baseUrl
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
       addDioInterceptors();

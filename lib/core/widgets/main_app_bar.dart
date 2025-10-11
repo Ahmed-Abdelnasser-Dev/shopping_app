@@ -74,7 +74,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                 padding: EdgeInsets.only(right: Spacing.generalHorizontalPadding),
                 child: GestureDetector(
                   onTap: onCartPressed,
-                  child: _buildIconCircle(iconPath: Media.cart),
+                  child: _buildIconCircle(iconPath: Media.bag),
                 ),
               ),
           ],

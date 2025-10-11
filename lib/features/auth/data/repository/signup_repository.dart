@@ -5,7 +5,7 @@ import 'package:shopping_app/features/auth/data/models/signup_models/signup_requ
 import 'package:shopping_app/features/auth/data/models/signup_models/signup_response_model.dart';
 
 class SignUpRepository {
-  final ApiService _apiService;
+  final UnifiedApiService _apiService;
 
   SignUpRepository(this._apiService);
 
