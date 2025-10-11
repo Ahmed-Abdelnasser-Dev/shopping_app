@@ -11,6 +11,8 @@ import 'package:shopping_app/features/home/presentation/cubit/home_state.dart';
 import 'package:shopping_app/features/home/presentation/widgets/barnd_box.dart';
 import 'package:shopping_app/features/home/presentation/widgets/product_card.dart';
 import 'package:shopping_app/features/home/presentation/widgets/search_bar.dart';
+import 'package:shopping_app/features/home/presentation/widgets/shimmer_brand_box.dart';
+import 'package:shopping_app/features/home/presentation/widgets/shimmer_product_card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -142,7 +144,54 @@ class _HomeState extends State<Home> {
 
                 // Products Grid
                 if (state is HomeLoading) ...[
-                  const Center(child: CircularProgressIndicator()),
+                  // Shimmer for Brands
+                  Padding(
+                    padding: EdgeInsets.only(left: Spacing.generalSpacing, bottom: 12.h),
+                    child: Text(
+                      "Popular Brands",
+                      style: TextStyles.h3.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: ColorManger.black,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 58.h,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.symmetric(horizontal: Spacing.generalSpacing),
+                      itemCount: 6,
+                      separatorBuilder: (context, idx) => SizedBox(width: 14.w),
+                      itemBuilder: (context, index) {
+                        return const ShimmerBrandBox();
+                      },
+                    ),
+                  ),
+                  SizedBox(height: Spacing.generalSpacing),
+                  // Shimmer for Products
+                  Padding(
+                    padding: EdgeInsets.only(left: Spacing.generalSpacing, bottom: 12.h),
+                    child: Text(
+                      "New Arrival",
+                      style: TextStyles.h3.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: ColorManger.black,
+                      ),
+                    ),
+                  ),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 6,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 16.h,
+                      crossAxisSpacing: 12.w,
+                      childAspectRatio: 0.7,
+                    ),
+                    itemBuilder: (context, index) => const ShimmerProductCard(),
+                  ),
+                  SizedBox(height: Spacing.generalSpacing),
                 ] else if (state is HomeError) ...[
                   Center(
                     child: Column(
