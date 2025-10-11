@@ -26,7 +26,6 @@ Future<void> _preloadCustomFont() async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await _preloadCustomFont();
 
   setupDependencyInjection();

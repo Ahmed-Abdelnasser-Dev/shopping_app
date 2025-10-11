@@ -6,9 +6,9 @@ import 'package:shopping_app/core/theme/spacing.dart';
 import 'package:shopping_app/core/theme/text_styles.dart';
 import 'package:shopping_app/core/widgets/bottom_button.dart';
 import 'package:shopping_app/core/widgets/main_app_bar.dart';
-import 'package:shopping_app/features/auth/data/model/login_request_model.dart';
+import 'package:shopping_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:shopping_app/features/auth/presentation/cubit/login_cubit.dart';
-import 'package:shopping_app/features/auth/presentation/widgets/login_bloc_listener.dart';
+import 'package:shopping_app/features/auth/presentation/widgets/bloc_listeners/login_bloc_listener.dart';
 import 'package:shopping_app/features/auth/presentation/widgets/terms_text.dart';
 import 'package:shopping_app/features/auth/presentation/widgets/email_and_password_form.dart';
 
