@@ -55,7 +55,7 @@ extension OtpStatePatterns on OtpState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Success value)?  success,TResult Function( _Failure value)?  failure,TResult Function( _ResendLoading value)?  resendLoading,TResult Function( _ResendSuccess value)?  resendSuccess,TResult Function( _ResendFailure value)?  resendFailure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Success value)?  success,TResult Function( _Failure value)?  failure,TResult Function( _ResendLoading value)?  resendLoading,TResult Function( _ResendSuccess value)?  resendSuccess,TResult Function( _ResendFailure value)?  resendFailure,TResult Function( _TimerUpdate value)?  timerUpdate,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -65,7 +65,8 @@ return success(_that);case _Failure() when failure != null:
 return failure(_that);case _ResendLoading() when resendLoading != null:
 return resendLoading(_that);case _ResendSuccess() when resendSuccess != null:
 return resendSuccess(_that);case _ResendFailure() when resendFailure != null:
-return resendFailure(_that);case _:
+return resendFailure(_that);case _TimerUpdate() when timerUpdate != null:
+return timerUpdate(_that);case _:
   return orElse();
 
 }
@@ -83,7 +84,7 @@ return resendFailure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Success value)  success,required TResult Function( _Failure value)  failure,required TResult Function( _ResendLoading value)  resendLoading,required TResult Function( _ResendSuccess value)  resendSuccess,required TResult Function( _ResendFailure value)  resendFailure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Success value)  success,required TResult Function( _Failure value)  failure,required TResult Function( _ResendLoading value)  resendLoading,required TResult Function( _ResendSuccess value)  resendSuccess,required TResult Function( _ResendFailure value)  resendFailure,required TResult Function( _TimerUpdate value)  timerUpdate,}){
 final _that = this;
 switch (_that) {
 case _Initial():
@@ -93,7 +94,8 @@ return success(_that);case _Failure():
 return failure(_that);case _ResendLoading():
 return resendLoading(_that);case _ResendSuccess():
 return resendSuccess(_that);case _ResendFailure():
-return resendFailure(_that);case _:
+return resendFailure(_that);case _TimerUpdate():
+return timerUpdate(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -110,7 +112,7 @@ return resendFailure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Success value)?  success,TResult? Function( _Failure value)?  failure,TResult? Function( _ResendLoading value)?  resendLoading,TResult? Function( _ResendSuccess value)?  resendSuccess,TResult? Function( _ResendFailure value)?  resendFailure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Success value)?  success,TResult? Function( _Failure value)?  failure,TResult? Function( _ResendLoading value)?  resendLoading,TResult? Function( _ResendSuccess value)?  resendSuccess,TResult? Function( _ResendFailure value)?  resendFailure,TResult? Function( _TimerUpdate value)?  timerUpdate,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -120,7 +122,8 @@ return success(_that);case _Failure() when failure != null:
 return failure(_that);case _ResendLoading() when resendLoading != null:
 return resendLoading(_that);case _ResendSuccess() when resendSuccess != null:
 return resendSuccess(_that);case _ResendFailure() when resendFailure != null:
-return resendFailure(_that);case _:
+return resendFailure(_that);case _TimerUpdate() when timerUpdate != null:
+return timerUpdate(_that);case _:
   return null;
 
 }
@@ -137,7 +140,7 @@ return resendFailure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( OtpResponseModel otpResponse)?  success,TResult Function( String error)?  failure,TResult Function()?  resendLoading,TResult Function( OtpResponseModel otpResponse)?  resendSuccess,TResult Function( String error)?  resendFailure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( OtpResponseModel otpResponse)?  success,TResult Function( String error)?  failure,TResult Function()?  resendLoading,TResult Function( OtpResponseModel otpResponse)?  resendSuccess,TResult Function( String error)?  resendFailure,TResult Function( int remainingSeconds)?  timerUpdate,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -146,7 +149,8 @@ return success(_that.otpResponse);case _Failure() when failure != null:
 return failure(_that.error);case _ResendLoading() when resendLoading != null:
 return resendLoading();case _ResendSuccess() when resendSuccess != null:
 return resendSuccess(_that.otpResponse);case _ResendFailure() when resendFailure != null:
-return resendFailure(_that.error);case _:
+return resendFailure(_that.error);case _TimerUpdate() when timerUpdate != null:
+return timerUpdate(_that.remainingSeconds);case _:
   return orElse();
 
 }
@@ -164,7 +168,7 @@ return resendFailure(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( OtpResponseModel otpResponse)  success,required TResult Function( String error)  failure,required TResult Function()  resendLoading,required TResult Function( OtpResponseModel otpResponse)  resendSuccess,required TResult Function( String error)  resendFailure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( OtpResponseModel otpResponse)  success,required TResult Function( String error)  failure,required TResult Function()  resendLoading,required TResult Function( OtpResponseModel otpResponse)  resendSuccess,required TResult Function( String error)  resendFailure,required TResult Function( int remainingSeconds)  timerUpdate,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
@@ -173,7 +177,8 @@ return success(_that.otpResponse);case _Failure():
 return failure(_that.error);case _ResendLoading():
 return resendLoading();case _ResendSuccess():
 return resendSuccess(_that.otpResponse);case _ResendFailure():
-return resendFailure(_that.error);case _:
+return resendFailure(_that.error);case _TimerUpdate():
+return timerUpdate(_that.remainingSeconds);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -190,7 +195,7 @@ return resendFailure(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( OtpResponseModel otpResponse)?  success,TResult? Function( String error)?  failure,TResult? Function()?  resendLoading,TResult? Function( OtpResponseModel otpResponse)?  resendSuccess,TResult? Function( String error)?  resendFailure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( OtpResponseModel otpResponse)?  success,TResult? Function( String error)?  failure,TResult? Function()?  resendLoading,TResult? Function( OtpResponseModel otpResponse)?  resendSuccess,TResult? Function( String error)?  resendFailure,TResult? Function( int remainingSeconds)?  timerUpdate,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -199,7 +204,8 @@ return success(_that.otpResponse);case _Failure() when failure != null:
 return failure(_that.error);case _ResendLoading() when resendLoading != null:
 return resendLoading();case _ResendSuccess() when resendSuccess != null:
 return resendSuccess(_that.otpResponse);case _ResendFailure() when resendFailure != null:
-return resendFailure(_that.error);case _:
+return resendFailure(_that.error);case _TimerUpdate() when timerUpdate != null:
+return timerUpdate(_that.remainingSeconds);case _:
   return null;
 
 }
@@ -561,6 +567,72 @@ class __$ResendFailureCopyWithImpl<$Res>
   return _then(_ResendFailure(
 null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _TimerUpdate implements OtpState {
+  const _TimerUpdate(this.remainingSeconds);
+  
+
+ final  int remainingSeconds;
+
+/// Create a copy of OtpState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TimerUpdateCopyWith<_TimerUpdate> get copyWith => __$TimerUpdateCopyWithImpl<_TimerUpdate>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TimerUpdate&&(identical(other.remainingSeconds, remainingSeconds) || other.remainingSeconds == remainingSeconds));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,remainingSeconds);
+
+@override
+String toString() {
+  return 'OtpState.timerUpdate(remainingSeconds: $remainingSeconds)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$TimerUpdateCopyWith<$Res> implements $OtpStateCopyWith<$Res> {
+  factory _$TimerUpdateCopyWith(_TimerUpdate value, $Res Function(_TimerUpdate) _then) = __$TimerUpdateCopyWithImpl;
+@useResult
+$Res call({
+ int remainingSeconds
+});
+
+
+
+
+}
+/// @nodoc
+class __$TimerUpdateCopyWithImpl<$Res>
+    implements _$TimerUpdateCopyWith<$Res> {
+  __$TimerUpdateCopyWithImpl(this._self, this._then);
+
+  final _TimerUpdate _self;
+  final $Res Function(_TimerUpdate) _then;
+
+/// Create a copy of OtpState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? remainingSeconds = null,}) {
+  return _then(_TimerUpdate(
+null == remainingSeconds ? _self.remainingSeconds : remainingSeconds // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 

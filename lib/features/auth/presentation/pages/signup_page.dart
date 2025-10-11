@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopping_app/core/dependency_injection/dependency_injection.dart';
+import 'package:shopping_app/core/routes/route_helper_extensions.dart';
+import 'package:shopping_app/core/routes/routes.dart';
 import 'package:shopping_app/core/theme/colors.dart';
 import 'package:shopping_app/core/theme/spacing.dart';
 import 'package:shopping_app/core/theme/text_styles.dart';
@@ -38,7 +40,7 @@ class _SignUpViewState extends State<_SignUpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(showBackButton: true, showCartButton: false),
+      appBar: const MainAppBar(showBackButton: false, showCartButton: false,),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -109,18 +111,50 @@ class _SignUpViewState extends State<_SignUpView> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Terms Text
+          // account already exists text
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
-              child: Text(
-                "By signing up, you agree to our Terms of Service and Privacy Policy",
-                style: TextStyles.b4.copyWith(color: ColorManger.grey),
-                textAlign: TextAlign.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account?",
+                    style: TextStyles.b4.copyWith(
+                      color: ColorManger.grey,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(width: 8.w),
+                  TextButton(
+                    onPressed: () {
+                      context.pushNamed(Routes.login);
+                    },
+                    style: ButtonStyle(
+                      overlayColor: WidgetStatePropertyAll(Colors.transparent),
+                      padding: WidgetStatePropertyAll(EdgeInsets.zero),
+                      minimumSize: WidgetStatePropertyAll(Size.zero),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      visualDensity: VisualDensity.compact,
+                    ),
+                    
+                    child: Text(
+                      "Login",
+                      style: TextStyles.b4.copyWith(
+                        color: ColorManger.black,
+                        fontWeight: FontWeight.w700,
+                        decoration: TextDecoration.underline,
+
+                        decorationThickness: 1,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          SizedBox(height: 20.h),
+          SizedBox(height: 5.h),
+
           // Bottom Button
           BottomButton(
             text: "Sign Up",

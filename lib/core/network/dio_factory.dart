@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shopping_app/core/network/auth_interceptor.dart';
 
 
 class DioFactory {
@@ -16,14 +17,18 @@ class DioFactory {
       dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
-      addDioInterceptor();
+      addDioInterceptors();
       return dio!;
     } else {
       return dio!;
     }
   }
 
-  static void addDioInterceptor() {
+  static void addDioInterceptors() {
+    // Add auth interceptor first (order matters)
+    dio?.interceptors.add(AuthInterceptor());
+    
+    // Add logging interceptor
     dio?.interceptors.add(
       PrettyDioLogger(
         requestBody: true,

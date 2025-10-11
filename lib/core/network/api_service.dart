@@ -4,8 +4,9 @@ import 'package:shopping_app/core/network/api_constants.dart';
 import 'package:shopping_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:shopping_app/features/auth/data/models/login_models/login_response_model.dart';
 import 'package:shopping_app/features/auth/data/models/otp_models/otp_request_model.dart';
-import 'package:shopping_app/features/auth/data/models/otp_models/otp_response_model.dart';
 import 'package:shopping_app/features/auth/data/models/otp_models/resend_otp_request_model.dart';
+import 'package:shopping_app/features/auth/data/models/refresh_token_models/refresh_token_request_model.dart';
+import 'package:shopping_app/features/auth/data/models/refresh_token_models/refresh_token_response_model.dart';
 import 'package:shopping_app/features/auth/data/models/signup_models/signup_request_model.dart';
 import 'package:shopping_app/features/auth/data/models/signup_models/signup_response_model.dart';
 
@@ -25,7 +26,15 @@ abstract class ApiService {
   Future<String> verifyEmail(@Body() OtpRequestModel otpRequest);
 
   @POST(ApiConstants.resendOtp)
-  Future<OtpResponseModel> resendOtp(
+  Future<String> resendOtp(
     @Body() ResendOtpRequestModel resendOtpRequest,
   );
+
+  @POST(ApiConstants.refreshToken)
+  Future<RefreshTokenResponseModel> refreshToken(
+    @Body() RefreshTokenRequestModel refreshTokenRequest,
+  );
+
+  @POST(ApiConstants.logOut)
+  Future<void> logout();
 }

@@ -26,7 +26,7 @@ class OtpRepository {
   ) async {
     try {
       final response = await _apiService.resendOtp(resendOtpRequest);
-      return ApiResult.success(response);
+      return ApiResult.success(OtpResponseModel(message: response));
     } catch (error) {
       return ApiResult.failure(error.toString());
     }

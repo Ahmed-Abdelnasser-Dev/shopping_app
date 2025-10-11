@@ -106,15 +106,13 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<OtpResponseModel> resendOtp(
-    ResendOtpRequestModel resendOtpRequest,
-  ) async {
+  Future<String> resendOtp(ResendOtpRequestModel resendOtpRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(resendOtpRequest.toJson());
-    final _options = _setStreamType<OtpResponseModel>(
+    final _options = _setStreamType<String>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -124,15 +122,64 @@ class _ApiService implements ApiService {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late OtpResponseModel _value;
+    final _result = await _dio.fetch<String>(_options);
+    late String _value;
     try {
-      _value = OtpResponseModel.fromJson(_result.data!);
+      _value = _result.data!;
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
+  }
+
+  @override
+  Future<RefreshTokenResponseModel> refreshToken(
+    RefreshTokenRequestModel refreshTokenRequest,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(refreshTokenRequest.toJson());
+    final _options = _setStreamType<RefreshTokenResponseModel>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/auth/refresh-token',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late RefreshTokenResponseModel _value;
+    try {
+      _value = RefreshTokenResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<void> logout() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/auth/logout',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

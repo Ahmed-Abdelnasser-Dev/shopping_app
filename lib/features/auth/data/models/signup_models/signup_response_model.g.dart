@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'signup_models/signup_response_model.dart';
+part of 'signup_response_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

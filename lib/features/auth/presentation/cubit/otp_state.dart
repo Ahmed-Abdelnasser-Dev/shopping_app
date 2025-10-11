@@ -13,4 +13,5 @@ class OtpState with _$OtpState {
   const factory OtpState.resendSuccess(OtpResponseModel otpResponse) =
       _ResendSuccess;
   const factory OtpState.resendFailure(String error) = _ResendFailure;
+  const factory OtpState.timerUpdate(int remainingSeconds) = _TimerUpdate;
 }

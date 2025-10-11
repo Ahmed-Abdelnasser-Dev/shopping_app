@@ -35,9 +35,12 @@ class OtpCubit extends Cubit<OtpState> {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_remainingSeconds > 0) {
         _remainingSeconds--;
-        emit(state);
+        // Emit a new state to trigger UI rebuild
+        emit(OtpState.timerUpdate(_remainingSeconds));
       } else {
         timer.cancel();
+        // Emit final state when timer reaches 0
+        emit(OtpState.timerUpdate(0));
       }
     });
   }
@@ -81,6 +84,10 @@ class OtpCubit extends Cubit<OtpState> {
         emit(OtpState.resendFailure(error));
       },
     );
+  }
+
+  void updateTimer(int remainingSeconds) {
+    _remainingSeconds = remainingSeconds;
   }
 
   bool validateForm() {

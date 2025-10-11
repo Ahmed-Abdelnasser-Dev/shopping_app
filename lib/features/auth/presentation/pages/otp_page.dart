@@ -102,29 +102,167 @@ class _OtpView extends StatelessWidget {
                     final cubit = context.read<OtpCubit>();
                     return Column(
                       children: [
-                        Text(
-                          "Resend code in ${cubit.formattedTime}",
-                          style: TextStyles.b3.copyWith(
-                            color: ColorManger.grey,
+                        if (!cubit.canResend)
+                          Text(
+                            "Resend code in ${cubit.formattedTime}",
+                            style: TextStyles.b3.copyWith(
+                              color: ColorManger.grey,
+                            ),
+                          )
+                        else
+                          Text(
+                            "Didn't receive the code?",
+                            style: TextStyles.b3.copyWith(
+                              color: ColorManger.grey,
+                            ),
                           ),
-                        ),
                         SizedBox(height: 8.h),
                         if (cubit.canResend)
-                          TextButton(
-                            onPressed: () {
-                              cubit.emitResendOtpStates();
-                            },
-                            style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                              minimumSize: Size.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              visualDensity: VisualDensity.compact,
+                          state.when(
+                            initial: () => TextButton(
+                              onPressed: () {
+                                cubit.emitResendOtpStates();
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: Text(
+                                "Resend Code",
+                                style: TextStyles.b3.copyWith(
+                                  color: ColorManger.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ),
-                            child: Text(
-                              "Resend",
-                              style: TextStyles.b3.copyWith(
-                                color: ColorManger.primary,
-                                fontWeight: FontWeight.w600,
+                            loading: () => TextButton(
+                              onPressed: () {
+                                cubit.emitResendOtpStates();
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: Text(
+                                "Resend Code",
+                                style: TextStyles.b3.copyWith(
+                                  color: ColorManger.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            success: (_) => TextButton(
+                              onPressed: () {
+                                cubit.emitResendOtpStates();
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: Text(
+                                "Resend Code",
+                                style: TextStyles.b3.copyWith(
+                                  color: ColorManger.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            failure: (_) => TextButton(
+                              onPressed: () {
+                                cubit.emitResendOtpStates();
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: Text(
+                                "Resend Code",
+                                style: TextStyles.b3.copyWith(
+                                  color: ColorManger.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            resendLoading: () => Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 16.w,
+                                  height: 16.h,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    valueColor: AlwaysStoppedAnimation<Color>(ColorManger.primary),
+                                  ),
+                                ),
+                                SizedBox(width: 8.w),
+                                Text(
+                                  "Sending...",
+                                  style: TextStyles.b3.copyWith(
+                                    color: ColorManger.grey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            resendSuccess: (_) => TextButton(
+                              onPressed: () {
+                                cubit.emitResendOtpStates();
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: Text(
+                                "Resend Code",
+                                style: TextStyles.b3.copyWith(
+                                  color: ColorManger.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            resendFailure: (_) => TextButton(
+                              onPressed: () {
+                                cubit.emitResendOtpStates();
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: Text(
+                                "Resend Code",
+                                style: TextStyles.b3.copyWith(
+                                  color: ColorManger.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            timerUpdate: (_) => TextButton(
+                              onPressed: () {
+                                cubit.emitResendOtpStates();
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: Text(
+                                "Resend Code",
+                                style: TextStyles.b3.copyWith(
+                                  color: ColorManger.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           ),
